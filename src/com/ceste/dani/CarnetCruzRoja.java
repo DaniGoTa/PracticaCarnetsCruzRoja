@@ -39,4 +39,33 @@ public class CarnetCruzRoja
         return dni;
     }
 
+    public void setNombre()
+    {
+        this.nombre=nombre;
+    }
+    public void setLocalidad()
+    {
+        this.localidad=localidad;
+    }
+    public void setServicio()
+    {
+        this.servicio=servicio;
+    }
+    public void setProvincia()
+    {
+        this.provincia=provincia;
+    }
+    public void setFecha()
+    {
+        this.fecha=fecha;
+    }
+    public void setApellidos()
+    {
+        this.apellidos=apellidos;
+    }
+    public void setDni()
+    {
+        this.dni=dni;
+    }
+
 }
