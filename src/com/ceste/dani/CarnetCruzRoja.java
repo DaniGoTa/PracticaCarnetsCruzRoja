@@ -10,6 +10,8 @@ public class CarnetCruzRoja
     String apellidos;
     String dni;
 
+    //getters
+
     public String getNombre()
     {
         return nombre;
@@ -39,33 +41,41 @@ public class CarnetCruzRoja
         return dni;
     }
 
-    public void setNombre()
+    // Setters
+
+    public void setNombre(String nombre)
     {
         this.nombre=nombre;
     }
-    public void setLocalidad()
+    public void setLocalidad(String localidad)
     {
         this.localidad=localidad;
     }
-    public void setServicio()
+    public void setServicio(String servicio)
     {
         this.servicio=servicio;
     }
-    public void setProvincia()
+    public void setProvincia(String provincia)
     {
         this.provincia=provincia;
     }
-    public void setFecha()
+    public void setFecha(String fecha)
     {
         this.fecha=fecha;
     }
-    public void setApellidos()
+    public void setApellidos(String apellidos)
     {
         this.apellidos=apellidos;
     }
-    public void setDni()
+    public void setDni(String dni)
     {
         this.dni=dni;
+    }
+
+    public String toString()
+    {
+        String pinta = dni + "\t" + nombre + "\t" + apellidos + "\t" + provincia + "\t" + localidad + "\t" + servicio + "\t" +fecha;
+        return pinta;
     }
 
 }
