@@ -10,6 +10,11 @@ public class CarnetCruzRoja
     String apellidos;
     String dni;
 
+    public CarnetCruzRoja (String dni)
+    {
+        this.dni=dni;
+    }
+
     //getters
 
     public String getNombre()
@@ -67,10 +72,10 @@ public class CarnetCruzRoja
     {
         this.apellidos=apellidos;
     }
-    public void setDni(String dni)
+    /*public void setDni(String dni)
     {
         this.dni=dni;
-    }
+    }*/
 
     public String toString()
     {

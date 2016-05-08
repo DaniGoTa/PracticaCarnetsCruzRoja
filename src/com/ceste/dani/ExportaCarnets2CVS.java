@@ -1,4 +1,4 @@
-package com.ceste.dani;
+/*package com.ceste.dani;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,3 +22,4 @@ public class ExportaCarnets2CVS
         escritorConBuffer.newLine();
     }
 }
+*/
