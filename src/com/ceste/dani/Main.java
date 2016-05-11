@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 public class Main
 {
-     static Scanner in = new Scanner(System.in);
-     static String nombreFichero = "C:\\Users\\Dani\\Desktop\\entrada.csv";
+    static Scanner in = new Scanner(System.in);
+    static String nombreFichero = "C:\\Users\\Dani\\Desktop\\entrada.csv";
+    static String fichero = "C:\\Users\\Dani\\Desktop\\entradaserializacion.ser";
     public static void main(String[] args)
     {
 
@@ -23,6 +24,9 @@ public class Main
         copyCarnetToArrayList(carnet, carnets);
 
         new ExportaCarnets2CVS(carnets, nombreFichero);
+
+        //serializacion
+        new CarnetsCruzRojaDb(fichero);
     }
 
     private static void copyCarnetToArrayList(CarnetCruzRoja[] carnet, ArrayList<CarnetCruzRoja> carnets)

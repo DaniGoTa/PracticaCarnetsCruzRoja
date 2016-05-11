@@ -1,15 +1,14 @@
 package com.ceste.dani;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.util.ArrayList;
 
-public class CarnetsCruzRojaDb
+class CarnetsCruzRojaDb
     {
     private ArrayList<CarnetCruzRoja> carnets; // Colección de carnets
-    private String fichero ; // nombre de fichero donde se guardan los carnets
-    CarnetsCurzRojaDb(String fichero) {
-        // Completa
+    private String fichero; // nombre de fichero donde se guardan los carnets
+    CarnetsCruzRojaDb(String fichero) {
+        this.fichero=fichero;
     }
     /**
      * Abre el fichero en modo lectura y carga sus datos en la variable carnets
@@ -17,7 +16,18 @@ public class CarnetsCruzRojaDb
      */
     public void cargar()
     {
-        // Completa
+        try
+        {
+            //ArrayList<CarnetCruzRoja> d = carnets;
+            FileInputStream f = new FileInputStream(fichero);
+            ObjectInputStream s = new ObjectInputStream(f);
+            carnets = (ArrayList<CarnetCruzRoja>) s.readObject();
+            s.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     /**
      * Abre el fichero en modo escritura y vuelca en el contenido del atributo carnets
@@ -25,6 +35,16 @@ public class CarnetsCruzRojaDb
      */
     public void guardar()
     {
-        // Completa
+        try
+        {
+            FileOutputStream f = new FileOutputStream(fichero);
+            ObjectOutputStream s = new ObjectOutputStream(f);
+            s.writeObject (carnets);
+            s.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
