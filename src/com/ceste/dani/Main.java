@@ -6,14 +6,31 @@ import java.util.Scanner;
 public class Main
 {
      static Scanner in = new Scanner(System.in);
+     static String nombreFichero = "C:\\Users\\Dani\\Desktop\\entrada.csv";
     public static void main(String[] args)
     {
+
         System.out.println("Cuantos carnets quiere introducir?");
         int size = in.nextInt();
 
+        // declaracion array normal
         CarnetCruzRoja carnet [] = new CarnetCruzRoja[size];
         carnet = addCarnet (carnet);
         pintaCarnetFromArray(carnet);
+
+        //Declaracion arrayList
+        ArrayList<CarnetCruzRoja> carnets = new ArrayList<>();
+        copyCarnetToArrayList(carnet, carnets);
+
+        new ExportaCarnets2CVS(carnets, nombreFichero);
+    }
+
+    private static void copyCarnetToArrayList(CarnetCruzRoja[] carnet, ArrayList<CarnetCruzRoja> carnets)
+    {
+        for (int i=0; i<carnet.length; ++i)
+        {
+            carnets.add(carnet[i]);
+        }
     }
 
     public static CarnetCruzRoja[] addCarnet(CarnetCruzRoja carnet[])
@@ -46,4 +63,5 @@ public class Main
             System.out.println(carnet[i].toString());
         }
     }
+
 }

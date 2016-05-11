@@ -1,25 +1,42 @@
-/*package com.ceste.dani;
+package com.ceste.dani;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ExportaCarnets2CVS
 {
-    public ExportaCarnets2CVS(ArrayList carnets, String nombreFichero)
+    String nombreFichero;
+    ArrayList<CarnetCruzRoja> carnets = new ArrayList<>();
+
+    public ExportaCarnets2CVS(ArrayList<CarnetCruzRoja> carnets, String nombreFichero)
     {
-        this.carnets = carnet;
+        this.carnets = carnets;
         this.nombreFichero = nombreFichero;
     }
-    public void guardaDatos()throws IOException
+    public void guardaDatos()
     {
-        FileWriter escritor = new FileWriter(nombreFichero);
-        BufferedWriter escritorConBuffer= new BufferedWriter(escritor);
-        // falta
-        carnets.get(0).toString();
-        // rellenar con campos
-        String carnetEnString = carnet1.getNombre() + "\t" + carnet1.getApellidos();
-        escritorConBuffer.write(carnetEnString, 0, carnetEnString.length());
-        escritorConBuffer.newLine();
+        try
+        {
+            FileWriter escritor = new FileWriter(nombreFichero);
+            BufferedWriter escritorConBuffer = new BufferedWriter(escritor);
+            try
+            {
+                for (int i = 0; i < carnets.size(); ++i)
+                {
+                    String carnetEnString = carnets.get(i).toString();
+                    escritorConBuffer.write(carnetEnString, 0, carnetEnString.length());
+                    escritorConBuffer.newLine();
+                }
+            }finally
+            {
+                escritorConBuffer.flush();
+                escritorConBuffer.close();
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
-*/
