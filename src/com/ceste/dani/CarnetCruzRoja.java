@@ -1,6 +1,8 @@
 package com.ceste.dani;
 
-public class CarnetCruzRoja
+import java.io.Serializable;
+
+public class CarnetCruzRoja implements Serializable, Comparable<CarnetCruzRoja>
 {
     String nombre;
     String localidad;
@@ -78,10 +80,16 @@ public class CarnetCruzRoja
         this.dni=dni;
     }
 
+    @Override
     public String toString()
     {
         String pinta = dni + "\t" + nombre + "\t" + apellidos + "\t" + provincia + "\t" + localidad + "\t" + servicio + "\t" +fecha;
         return pinta;
     }
 
+    @Override
+    public int compareTo(CarnetCruzRoja o)
+    {
+        return this.apellidos.compareTo(o.apellidos);
+    }
 }

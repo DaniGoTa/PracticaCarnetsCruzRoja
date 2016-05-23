@@ -7,8 +7,10 @@ class CarnetsCruzRojaDb
     {
     private ArrayList<CarnetCruzRoja> carnets; // Colección de carnets
     private String fichero; // nombre de fichero donde se guardan los carnets
-    CarnetsCruzRojaDb(String fichero) {
+
+    CarnetsCruzRojaDb(String fichero, ArrayList<CarnetCruzRoja> carnets) {
         this.fichero=fichero;
+        this.carnets=carnets;
     }
     /**
      * Abre el fichero en modo lectura y carga sus datos en la variable carnets
@@ -23,6 +25,7 @@ class CarnetsCruzRojaDb
             ObjectInputStream s = new ObjectInputStream(f);
             carnets = (ArrayList<CarnetCruzRoja>) s.readObject();
             s.close();
+            System.out.println(carnets);
         }
         catch (Exception e)
         {

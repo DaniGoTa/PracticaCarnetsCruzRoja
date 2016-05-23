@@ -1,13 +1,14 @@
 package com.ceste.dani;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main
 {
     static Scanner in = new Scanner(System.in);
-    static String nombreFichero = "C:\\Users\\Dani\\Desktop\\entrada.csv";
-    static String fichero = "C:\\Users\\Dani\\Desktop\\entradaserializacion.ser";
+    static final String nombreFichero = "C:\\Users\\Dani\\Desktop\\entrada.csv";
+    static final String fichero = "C:\\Users\\Dani\\Desktop\\entradaserializacion.ser";
     public static void main(String[] args)
     {
 
@@ -22,11 +23,15 @@ public class Main
         //Declaracion arrayList
         ArrayList<CarnetCruzRoja> carnets = new ArrayList<>();
         copyCarnetToArrayList(carnet, carnets);
+        pintaCarnetFromArrayList(carnets);
 
-        new ExportaCarnets2CVS(carnets, nombreFichero);
+        ExportaCarnets2CVS exportador = new ExportaCarnets2CVS(carnets, nombreFichero);
+        exportador.guardaDatos();
 
         //serializacion
-        new CarnetsCruzRojaDb(fichero);
+        CarnetsCruzRojaDb serializador = new CarnetsCruzRojaDb(fichero, carnets);
+        serializador.guardar();
+        serializador.cargar();
     }
 
     private static void copyCarnetToArrayList(CarnetCruzRoja[] carnet, ArrayList<CarnetCruzRoja> carnets)
@@ -35,6 +40,7 @@ public class Main
         {
             carnets.add(carnet[i]);
         }
+        Collections.sort(carnets);
     }
 
     public static CarnetCruzRoja[] addCarnet(CarnetCruzRoja carnet[])
@@ -62,10 +68,20 @@ public class Main
 
     public static void pintaCarnetFromArray(CarnetCruzRoja carnet[])
     {
+        System.out.println("Se escribira el array normal");
         for (int i=0;i<carnet.length;++i)
         {
             System.out.println(carnet[i].toString());
         }
     }
 
+    public static void pintaCarnetFromArrayList(ArrayList<CarnetCruzRoja> carnets)
+    {
+        System.out.println("Se escribira el arrayList");
+        for (int i=0;i<carnets.size();++i)
+        {
+            System.out.println(carnets.get(i));
+
+        }
+    }
 }
